@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse
@@ -46,7 +47,7 @@ def index(request):
                  messageTooMuchFailures=messageTooMuchFailures,
                  saveAnswer=saveAnswer)
             obj.save()
-
+        messages.success(request, 'Erfolgreich gespeichert')
         return render(request, 'crone.html', {})
     else:
         return render(request, 'crone.html', {})
