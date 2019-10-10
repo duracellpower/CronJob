@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="container" id="main">
+
+
+            <div id="first-container">
+                <h1>Cron-Job erstellen</h1>
+                <p>Füllen Sie das folgende Formular aus, um einen Cron-Job anzulegen. Es werden sowohl http- als auch
+                    https-URLs unterstützt. Falls die URL mit HTTP-Authentifizierung gesichert ist (z.B.
+                    ".htaccess"-Passwortschutz), hinterlegen Sie bitte auch die entsprechenden Zugangsdaten, damit wir
+                    die
+                    Website korrekt abrufen können.</p>
+                <p class="font-italic">Hinweis: Weitere erweiterte Einstellungen für Ihren Cron-Job können Sie nach dem
+                    Anlegen vornehmen, indem Sie den Job bearbeiten.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="h5 mt-2">Titel, Adresse</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-columns-2" placeholder="Titel"
+                           aria-label="Titel"
+                           aria-describedby="basic-addon1" name="title">
+                    <input type="text" class="form-control form-control-columns-2" placeholder="http://"
+                           aria-label="http://"
+                           aria-describedby="basic-addon1" name="http">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="h5 mt-2">Erfordert HTTP-Authentifizierung</h2>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Benutzername" aria-label="Benutzername"
+                           aria-describedby="basic-addon1" name="benutzername">
+                    <input type="text" class="form-control" placeholder="Passwort" aria-label="Passwort"
+                           aria-describedby="basic-addon1" name="passwort">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="h5 mt-2">Ausführung</h2>
+                <div class="row">
+                    <div class="col ml-3">
+                        <input type="radio" class="form-check-input" name="ausführung" value="1">
+                        <span>Alle</span>
+                        <input type="number" min="1" max="60" name="minute">
+                        <span> Minute(n)</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ml-3">
+                        <input type="radio" class="form-check-input" name="ausführung" value="2">
+                        <span>Jeden Tag um </span>
+                        <input type="number" min="0" max="24" name="tagStunde">
+                        <span> : </span>
+                        <input type="number" min="0" max="59" name="tagMinute">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ml-3">
+                        <input type="radio" class="form-check-input" name="ausführung" value="3">
+                        <span>Immer am </span>
+                        <input type="number" min="0" max="31" name="monatTag">
+                        <span> des Monats um </span>
+                        <input type="number" min="0" max="24" name="monatStunde">
+                        <span> : </span>
+                        <input type="number" min="0" max="59" name="monatMinute">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col ml-3">
+                        <input type="radio" class="form-check-input" id="exampleCheck1" name="ausführung" value="4">
+                        <label class="form-check-label" for="exampleCheck1" data-model-name="benutzerdefiniert">Benutzerdefiniert</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <h2 class="h5 mt-2">Benachrichtigungen</h2>
+                <p>Mich per E-Mail benachrichtigen bei</p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="fehlgeschlagen"
+                           value="True">
+                    <label class="form-check-label" for="exampleCheck1">Fehlschlag des Jobs</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="erfolgreich" value="True">
+                    <label class="form-check-label" for="exampleCheck1">erfolgreichem Abruf nach vorherigem
+                        Fehlschlag</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="deaktiviert" value="True">
+                    <label class="form-check-label" for="exampleCheck1">automatischer Deaktivierung wegen zu vieler
+                        Fehlschläge</label>
+                </div>
+            </div>
+
+
+            <div class="section">
+                <h2 class="h5 mt-2">Allgemein</h2>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="speichern" value="True">
+                    <label class="form-check-label" for="exampleCheck1">Antwort speichern</label>
+                </div>
+
+            </div>
+
+            <p>Mit der Erstellung des Cron-Jobs erklären Sie, dass Sie entweder Inhaber der abzurufenden Webseite sind
+                oder im Einverständnis des Inhabers handeln. </p>
+            <button type="submit" class="btn btn-info">Cron-Job erstellen</button>
+        </div>
+    </form>
+
+    {% else %}
+        <script>
+        window.location.href = "{% url 'login' %}"
+        </script>
+
+    {% endif %}
+
+
+
+
+
+{% endblock %}
+
+

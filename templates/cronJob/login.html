@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% if request.user.is_authenticated%}
+        <script>
+                window.location.href = "{% url 'homepage' %}"
+            </script>
+        {% else %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ userForm }}
+        <button type="submit" class="btn btn-info">Login</button>
+
+
+
+    </form>
+
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cron-Job</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-light bg-dark">
+    <a class="navbar-brand text-info font-weight-bold" href="/">
+        <img src='../../static/img/cronjob.jpg' width="35" height="35" class="d-inline-block align-top mr-2" alt="">
+        Cron-Job
+    </a>
+
+        <a href="{% url 'authentification' %}">
+            <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit">Anmelden</button>
+        </a>
+
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button>
+
+
+</nav>
+<br>
+{% block content %} {% endblock %}
+<br>
+
+<div class="footer-copyright text-center py-3 bg-dark text-info">© 2019 Copyright: Ilona Siegrist</a>
+</div>
+
+</body>
+</html>

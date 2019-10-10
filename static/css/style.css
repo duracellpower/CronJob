@@ -1,0 +1,45 @@
+body {
+    font-family: sans-serif;
+}
+
+h2 {
+    color: dimgrey;
+}
+
+#main {
+    width: 70%;
+    border: none;
+}
+
+.section {
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+    padding: 0px 10px 10px 10px;
+    margin: 30px;
+    width: 80%;
+}
+
+#first-container {
+    border: none;
+}
+
+.form-control {
+    width: 45%;
+}
+
+.form-control-columns-2 {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+.inlineFormCustomSelect {
+    width: 40px;
+}
+
+.row {
+    margin: 10px;
+}
+
+.hover {
+    background-color: lightgrey;
+}

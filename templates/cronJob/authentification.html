@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h2>Anmelden</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ authentificationForm }}
+    <button type="submit" class="btn btn-info">Anmelden</button>
+    </form>
+
+
+{% endblock %}
