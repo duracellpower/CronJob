@@ -1,0 +1,9 @@
+Click==7.0
+Django==2.2.6
+django-bulma==0.6.0
+import-string==0.1.0
+manage==0.1.13
+pytz==2019.3
+PyYAML==5.1.2
+six==1.12.0
+sqlparse==0.3.0
