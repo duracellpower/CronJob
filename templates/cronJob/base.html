@@ -10,26 +10,58 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-light bg-dark">
-    <a class="navbar-brand text-info font-weight-bold" href="/">
-        <img src='../../static/img/cronjob.jpg' width="35" height="35" class="d-inline-block align-top mr-2" alt="">
-        Cron-Job
-    </a>
+<nav class="navbar navbar-inverse bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand text-info font-weight-bold" href="/">
+                <img src='../../static/img/cronjob.jpg' width="35" height="35" class="d-inline-block align-top mr-2"
+                     alt="">Cron-Job
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <div class="row">
+                <div class="col">
+                    {% if request.user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'logout' %}">
+                                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button>
+                            </a>
+                        </li>
 
-        <a href="{% url 'authentification' %}">
-            <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit">Anmelden</button>
-        </a>
-
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button>
-
-
+                    {% else %}
+                        </div>
+                        <div class="col">
+                            <li>
+                                <a href="{% url 'login' %}">
+                                    <button class="btn btn-info my-2 my-sm-0" type="submit">Login</button>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="col">
+                            <li>
+                                <a href="{% url 'authentification' %}">
+                                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Registrieren
+                                    </button>
+                                </a>
+                            </li>
+                        </div>
+                        </div>
+                    {% endif %}
+        </ul>
+    </div>
 </nav>
+
+
 <br>
 {% block content %} {% endblock %}
 <br>
 
-<div class="footer-copyright text-center py-3 bg-dark text-info">© 2019 Copyright: Ilona Siegrist</a>
-</div>
+
+
+
 
 </body>
+<footer>
+    <div class="footer-copyright text-center py-3 bg-dark text-info" id="footer">© 2019 Copyright: Ilona Siegrist</div>
+</footer>
 </html>
