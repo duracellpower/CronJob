@@ -10,6 +10,6 @@ urlpatterns = [
     path('authentification/', views.userAuthentification, name='authentification'),
     path('logout/', views.userLogout, name='logout'),
     path('', views.home, name='home'),
-    path('test', views.testFunction, name='test')
+
 
 ]
