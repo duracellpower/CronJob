@@ -7,15 +7,6 @@
         <form method="POST">
             {% csrf_token %}
             <div class="container" id="main">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="{{ message.tags }}">
-                            <div class="bg-success has-text-white">
-                                {{ message }}
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
 
                 <div id="first-container">
                     <h1>Cron-Job erstellen</h1>
@@ -31,13 +22,23 @@
                         Anlegen vornehmen, indem Sie den Job bearbeiten.</p>
                 </div>
 
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="{{ message.tags }}">
+                            <div class="bg-info text-white">
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 <div class="section">
                     <h2 class="h5 mt-2">Titel, Adresse</h2>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control form-control-columns-2" placeholder="Titel"
                                aria-label="Titel"
-                               aria-describedby="basic-addon1" name="title">
-                        <input type="text" class="form-control form-control-columns-2" placeholder="http://"
+                               aria-describedby="basic-addon1" name="title" maxlength="30">
+                        <input type="url" class="form-control form-control-columns-2" placeholder="http://"
                                aria-label="http://"
                                aria-describedby="basic-addon1" name="http">
                     </div>
@@ -47,9 +48,9 @@
                     <h2 class="h5 mt-2">Erfordert HTTP-Authentifizierung</h2>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Benutzername" aria-label="Benutzername"
-                               aria-describedby="basic-addon1" name="benutzername">
-                        <input type="text" class="form-control" placeholder="Passwort" aria-label="Passwort"
-                               aria-describedby="basic-addon1" name="passwort">
+                               aria-describedby="basic-addon1" name="benutzername" maxlength="30">
+                        <input type="password" class="form-control" placeholder="Passwort" aria-label="Passwort"
+                               aria-describedby="basic-addon1" name="passwort" maxlength="30">
                     </div>
                 </div>
 

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>Willkommen bei Cron-Job</h2>
+        <p>Hier können Sie einen Cron-Job erstellen</p>
+        <p>Um von dem Dienst zu profitieren, müssen Sie eingeloggt sein.</p>
+        <a href="{% url 'login' %}">
+            <button class="btn btn-info my-2 my-sm-0" type="submit">Login</button>
+        </a>
+    </div>
+{% endblock %}
