@@ -63,6 +63,7 @@ def checkTrue(cb):
     return (cb == "True")
 
 
+# Logik von Vinzenz, habe sie aber selbst geschrieben (und verstanden :-))
 def calcSchedule(request):
     if (request.POST.get("ausführung", "") == "1"):
         result = "*/" + request.POST.get("minute", "") + " * * * *"
@@ -77,6 +78,7 @@ def calcSchedule(request):
         return result
     else:
         return 'x'
+
 
 def userLogin(request):
     userForm = AuthenticationForm()
@@ -111,35 +113,37 @@ def userAuthentification(request):
     return render(request, 'authentification.html', {'authentificationForm': authentificationForm})
 
 
-def testFunction(request):
-    from cronJob.models import CronJob
-
-    URL = "http://127.0.0.1:8000/index"
-
-    PARAMS = {'title': '123456',
-              'http': 'www.google.com',
-              'benutzername': 'Test',
-              'passwort': 'testpassword123',
-              'ausführung': '2',
-              'tagStunde': '16',
-              'tagMinute': '15',
-              'fehlgeschlagen': True,
-              'speichern': True
-              }
-
-    requests.post(url=URL, params=PARAMS)
-
-    # db auslesen
-    success = 'Falset'
-    entrys = CronJob.objects.all()
-    for entry in entrys:
-        if entry.title == '123456':
-            success = 'True'
-            break
-
-    if success:
-        print("Test erfolgreich.")
-    else:
-        print("Test failed")
-
-    return render(request, 'test.html'), {'success': success}
+#def testFunction(request):
+#    from cronJob.models import CronJob
+#
+#    URL = "http://127.0.0.1:8000/index"
+#
+#    PARAMS = {'title': '123456',
+#              'http': 'www.google.com',
+#              'benutzername': 'Test',
+#              'passwort': 'testpassword123',
+#              'ausführung': '2',
+#              'tagStunde': '16',
+#              'tagMinute': '15',
+#              'fehlgeschlagen': True,
+#              'speichern': True
+#              }
+#
+#    response = requests.post("http://127.0.0.1:8000/index", data=PARAMS)
+#    content = response.content
+#    print("--------------->", response)
+#
+#    # db auslesen
+#    success = 'Falset'
+#    entrys = CronJob.objects.all()
+#    for entry in entrys:
+#        if entry.title == '123456':
+#            success = 'True'
+#            break
+#
+#    if success:
+#        print("Test erfolgreich.")
+#    else:
+#        print("Test failed")
+#
+#    return render(request, 'test.html'), {'success': success}

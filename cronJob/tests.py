@@ -1,35 +1,30 @@
-from django.test import TestCase
-import requests
+from django.test import SimpleTestCase
+from django.urls import reverse, resolve
 
-from cronJob.models import CronJob
+from cronJob.views import index, userLogin, userAuthentification, userLogout, home
 
-URL = "http://127.0.0.1:8000/index"
+# mit Unterstützung von Mike, nachdem mein vorheriges Test-Projekt leider nicht ging (siehe views.py zu unterst)
 
-PARAMS = {'title': '123456',
-          'http': 'www.google.com',
-          'benutzername': 'Test',
-          'passwort': 'testpassword123',
-          'ausführung': '2',
-          'tagStunde': '16',
-          'tagMinute': '15',
-          'fehlgeschlagen': True,
-          'speichern': True
-}
+class UrlTest(SimpleTestCase):
 
-requests.get(url=URL, params=PARAMS)
+    def testIndex(self):
+        url = reverse('homepage')
+        self.assertEqual(resolve(url).func, index)
 
-# db auslesen
-success = False
-entrys = CronJob.objects.all()
-for entry in entrys:
-    if entry.title == '123456':
-        success = True
-        break
+    def testLogin(self):
+        url = reverse('login')
+        self.assertEqual(resolve(url).func, userLogin)
 
+    def testRegister(self):
+        url = reverse('authentification')
+        self.assertEqual(resolve(url).func, userAuthentification)
 
-if success:
-    print("Test erfolgreich.")
-else:
-    print("Test failed")
+    def testLogout(self):
+        url = reverse('logout')
+        self.assertEqual(resolve(url).func, userLogout)
+
+    def testHome(self):
+        url = reverse('home')
+        self.assertEqual(resolve(url).func, home)
 
 

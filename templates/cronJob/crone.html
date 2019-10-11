@@ -58,30 +58,30 @@
                     <h2 class="h5 mt-2">Ausführung</h2>
                     <div class="row">
                         <div class="col ml-3">
-                            <input type="radio" class="form-check-input" name="ausführung" value="1">
+                            <input type="radio" class="form-check-input" name="ausführung" value="1" onclick="fields(1)">
                             <span>Alle</span>
-                            <input type="number" min="1" max="60" name="minute">
+                            <input type="number" min="1" max="60" name="minute" id="minute">
                             <span> Minute(n)</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col ml-3">
-                            <input type="radio" class="form-check-input" name="ausführung" value="2">
+                            <input type="radio" class="form-check-input" name="ausführung" value="2" onclick="fields(2)">
                             <span>Jeden Tag um </span>
-                            <input type="number" min="0" max="24" name="tagStunde">
+                            <input type="number" min="0" max="24" name="tagStunde" id="tagStunde">
                             <span> : </span>
-                            <input type="number" min="0" max="59" name="tagMinute">
+                            <input type="number" min="0" max="59" name="tagMinute" id="tagMinute">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col ml-3">
-                            <input type="radio" class="form-check-input" name="ausführung" value="3">
+                            <input type="radio" class="form-check-input" name="ausführung" value="3" onclick="fields(3)">
                             <span>Immer am </span>
-                            <input type="number" min="0" max="31" name="monatTag">
+                            <input type="number" min="0" max="31" name="monatTag" id="monatTag">
                             <span> des Monats um </span>
-                            <input type="number" min="0" max="24" name="monatStunde">
+                            <input type="number" min="0" max="24" name="monatStunde" id="monatStunde">
                             <span> : </span>
-                            <input type="number" min="0" max="59" name="monatMinute">
+                            <input type="number" min="0" max="59" name="monatMinute" id="monatMinute">
                         </div>
                     </div>
 

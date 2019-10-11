@@ -1,4 +1,5 @@
 {% load static %}
+<script src="{% static 'javaScript/script.js' %}"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +18,9 @@
                 <img src='../../static/img/cronjob.jpg' width="35" height="35" class="d-inline-block align-top mr-2"
                      alt="">Cron-Job
             </a>
-            <a class="text-white navbar-link ml-2" href="{% url 'homepage' %}">Crone-Job erfassen</a>
-            <a class="text-white navbar-link ml-2" href="{% url 'test' %}">Crone-Job testen</a>
+
+            <a class="text-white navbar-link ml-2" href="{% url 'homepage' %}">Cron-Job erfassen</a>
+            <!--<a class="text-white navbar-link ml-2" href="{% url 'test' %}">Cron-Job testen</a> -->
 
         </div>
         <ul class="nav navbar-nav navbar-right">
