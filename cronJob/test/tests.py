@@ -3,6 +3,7 @@ from django.urls import reverse, resolve
 
 from cronJob.views import index, userLogin, userAuthentification, userLogout, home
 
+
 # mit Unterstützung von Mike, nachdem mein vorheriges Test-Projekt leider nicht ging (siehe views.py zu unterst)
 
 class UrlTest(SimpleTestCase):
@@ -26,5 +27,3 @@ class UrlTest(SimpleTestCase):
     def testHome(self):
         url = reverse('home')
         self.assertEqual(resolve(url).func, home)
-
-
