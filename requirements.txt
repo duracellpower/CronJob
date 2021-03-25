@@ -7,7 +7,7 @@ idna==2.8
 import-string==0.1.0
 manage==0.1.13
 pytz==2019.3
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 six==1.12.0
 sqlparse==0.3.0
